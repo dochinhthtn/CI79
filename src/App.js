@@ -1,17 +1,23 @@
 import { useState } from "react";
-import TestComponent from "./components/TestComponent";
-import TodoApp from "./components/TodoApp";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 
 function App() {
 
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <h2>Count: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Increase Count</button>
-      {count > 5 ? <h1>Count lớn hơn 5</h1> : <TestComponent />}
-    </div>
+    <BrowserRouter>
+      <Link to="/">Trang chủ</Link> <br />
+      <Link to="/contact">Liên hệ</Link><br />
+      <Link to="/about">Giới thiệu</Link><br />
+
+
+      <Routes>
+        <Route path="/" element={<h1>Đây là trang chủ</h1>} />
+        <Route path="/contact" element={<h1>Đây là liên hệ</h1>} />
+        <Route path="/about" element={<h1>Đây là trang giới thiệu</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
